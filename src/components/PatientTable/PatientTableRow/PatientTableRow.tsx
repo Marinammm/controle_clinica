@@ -3,6 +3,7 @@ import TableRow from '../../TableRow/TableRow';
 import { PatientType } from '../../../utils/types';
 
 import * as S from './PatientTableRow.styles';
+import Form from '../../Form/Form';
 
 type PatientTableRowProps = {
     patient: PatientType;
@@ -26,13 +27,21 @@ const PatientTableRow = ({ patient }: PatientTableRowProps) => {
     return (
         <TableRow>
             <S.Cell>{patient.name}</S.Cell>
-            <S.NumberCell>{patient.week1}</S.NumberCell>
-            <S.NumberCell>{patient.week2}</S.NumberCell>
-            <S.NumberCell>{patient.week3}</S.NumberCell>
-            <S.NumberCell>{patient.week4}</S.NumberCell>
-            <S.NumberCell>{patient.week5}</S.NumberCell>
-            <S.NumberCell>{total}</S.NumberCell>
-            <S.NumberCell>{missing}</S.NumberCell>
+            <S.NumberCell>
+                <Form
+                    value={patient.week1.toString()}
+                    handleChange={(v) => console.log(v)}
+                    adornment="R$"
+                    maxWidth={80}
+                />
+                    {/* {patient.week1.toFixed(2)} */}
+            </S.NumberCell>
+            <S.NumberCell>{patient.week2.toFixed(2)}</S.NumberCell>
+            <S.NumberCell>{patient.week3.toFixed(2)}</S.NumberCell>
+            <S.NumberCell>{patient.week4.toFixed(2)}</S.NumberCell>
+            <S.NumberCell>{patient.week5.toFixed(2)}</S.NumberCell>
+            <S.NumberCell>{total.toFixed(2)}</S.NumberCell>
+            <S.NumberCell>{missing.toFixed(2)}</S.NumberCell>
         </TableRow>
     );
 }

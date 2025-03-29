@@ -1,5 +1,6 @@
 import React from "react";
 import * as S from "./PatientTable.styles";
+import PatientTableRow from "./PatientTableRow/PatientTableRow";
 
 const mock = [
     {
@@ -63,22 +64,7 @@ const PatientTable = () => {
                 <S.NumberCell>Entrada</S.NumberCell>
                 <S.NumberCell>A receber</S.NumberCell>
             </S.TableRow>
-            {mock.map((patient) => {
-                const patientTotal = patient.week1 + patient.week2 + patient.week3 + patient.week4 + patient.week5;
-                return (
-                    <S.TableRow>
-                        <S.Cell>{patient.name}</S.Cell>
-                        <S.NumberCell>{patient.week1}</S.NumberCell>
-                        <S.NumberCell>{patient.week2}</S.NumberCell>
-                        <S.NumberCell>{patient.week3}</S.NumberCell>
-                        <S.NumberCell>{patient.week4}</S.NumberCell>
-                        <S.NumberCell>{patient.week5}</S.NumberCell>
-                        <S.NumberCell>{patientTotal.toFixed(2)}</S.NumberCell>
-                        <S.NumberCell>{(patient.charged - patientTotal).toFixed(2)}</S.NumberCell>
-
-                    </S.TableRow>
-                )
-            })}
+            {mock.map((patient) => <PatientTableRow patient={patient} />)}
         </S.Table>
     )
 }

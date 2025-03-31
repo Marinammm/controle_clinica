@@ -2,11 +2,11 @@ import { SMALL, MEDIUM, LARGE } from "./constants";
 
 export type PatientType = {
     name: string;
-    week1: number;
-    week2: number;
-    week3: number;
-    week4: number;
-    week5: number;
+    week1: string;
+    week2: string;
+    week3: string;
+    week4: string;
+    week5: string;
     charged: number;
 }
 

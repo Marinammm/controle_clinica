@@ -15,9 +15,16 @@ export const Container = styled.div<ContainerProps>`
       display: flex;
       justify-content: space-around;
       align-items: center;
+      overflow: hidden;
 
-      span {
-        font-size: ${adornmentSize === SMALL && `14px` || adornmentSize === MEDIUM && `18px` || adornmentSize === LARGE && `22px`};
+      
+      font-size: ${adornmentSize === SMALL && `14px` || adornmentSize === MEDIUM && `18px` || adornmentSize === LARGE && `22px`};
+      
+
+      :focus-within {
+        border-bottom: 1px solid black;
+        outline: none;
+        font-size: 18px;
       }
     `}
 `;
@@ -25,4 +32,6 @@ export const Container = styled.div<ContainerProps>`
 export const Input = styled.input`
     background-color: transparent;
     border: none;
+    max-width: inherit;
+    transition: font-size 0.3s ease-out;
 `

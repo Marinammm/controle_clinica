@@ -13,3 +13,7 @@ export type PatientType = {
 enum size { SMALL, MEDIUM, LARGE };
 
 export type Size = keyof typeof size;
+
+enum masks { 'currency', 'phone', 'email', 'none' };
+
+export type Masks =  keyof typeof masks;

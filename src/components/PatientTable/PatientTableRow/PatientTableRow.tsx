@@ -4,6 +4,8 @@ import { PatientType } from '../../../utils/types';
 
 import * as S from './PatientTableRow.styles';
 import Form from '../../Form/Form';
+import { getNumberFromCurrencyString } from '../../../utils/functions';
+import { applyMask } from '../../Form/masks';
 
 type PatientTableRowProps = {
     patient: PatientType;
@@ -27,7 +29,11 @@ const PatientTableRow = ({ patient }: PatientTableRowProps) => {
     }, [patient])
 
     useEffect(() => {
-        const currentTotal = Number(week1) + Number(week2) + Number(week3) + Number(week4) + Number(week5);
+        const currentTotal = getNumberFromCurrencyString(week1) +
+            getNumberFromCurrencyString(week2) +
+            getNumberFromCurrencyString(week3) +
+            getNumberFromCurrencyString(week4) +
+            getNumberFromCurrencyString(week5);
         setTotal(currentTotal);
         setMissing(patient.charged - currentTotal);
     }, [week1, week2, week3, week4, week5]);
@@ -38,45 +44,45 @@ const PatientTableRow = ({ patient }: PatientTableRowProps) => {
             <S.NumberCell>
                 <Form
                     value={week1}
-                    handleChange={(v) => setWeek1(v.target.value)}
-                    adornment="R$"
+                    handleChange={(v) => setWeek1(v)}
                     maxWidth={80}
+                    mask='currency'
                 />
             </S.NumberCell>
             <S.NumberCell>
                 <Form
                     value={week2}
-                    handleChange={(v) => setWeek2(v.target.value)}
-                    adornment="R$"
+                    handleChange={setWeek2}
                     maxWidth={80}
+                    mask='currency'
                 />
             </S.NumberCell>
             <S.NumberCell>
                 <Form
                     value={week3}
-                    handleChange={(v) => setWeek3(v.target.value)}
-                    adornment="R$"
+                    handleChange={setWeek3}
                     maxWidth={80}
+                    mask='currency'
                 />
             </S.NumberCell>
             <S.NumberCell>
                 <Form
                     value={week4}
-                    handleChange={(v) => setWeek4(v.target.value)}
-                    adornment="R$"
+                    handleChange={setWeek4}
                     maxWidth={80}
+                    mask='currency'
                 />
             </S.NumberCell>
             <S.NumberCell>
                 <Form
                     value={week5}
-                    handleChange={(v) => setWeek5(v.target.value)}
-                    adornment="R$"
+                    handleChange={setWeek5}
                     maxWidth={80}
+                    mask='currency'
                 />
             </S.NumberCell>
-            <S.NumberCell>{total.toFixed(2)}</S.NumberCell>
-            <S.NumberCell>{missing.toFixed(2)}</S.NumberCell>
+            <S.NumberCell>{applyMask(total.toFixed(2).toString(), 'currency')}</S.NumberCell>
+            <S.NumberCell>{applyMask(missing.toFixed(2).toString(), 'currency')}</S.NumberCell>
         </TableRow>
     );
 }

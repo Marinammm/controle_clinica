@@ -6,10 +6,10 @@ const mock = [
     {
         name: 'Jurandi Xavier',
         week1: '486,66',
-        week2: '178,45',
-        week3: '50,00',
-        week4: '469,33',
-        week5: '978,45',
+        week2: '0,00',
+        week3: '0,00',
+        week4: '0,00',
+        week5: '0,00',
         charged: 2500,
     },
     {
